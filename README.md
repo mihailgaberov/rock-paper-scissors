@@ -1,0 +1,1 @@
+## A React/Redux implementation of the classic game [Rock Paper Scissors](https://en.wikipedia.org/wiki/Rock%E2%80%93paper%E2%80%93scissors).
