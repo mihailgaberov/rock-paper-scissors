@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import StyledModesArea from './StyledButton'
 
-describe('App component', () => {
+describe('StyledModesArea component', () => {
   it('should render without crashing', () => {
     const div = document.createElement('div')
-    ReactDOM.render(<App />, div)
+    ReactDOM.render(<StyledModesArea />, div)
   })
 })

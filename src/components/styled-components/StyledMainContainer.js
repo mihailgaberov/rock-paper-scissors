@@ -11,6 +11,7 @@ const MainContainer = styled.div`
       color: papayawhip;
       background-color: #084075;
       h1 {
+        font-size: 1.4em;
         margin: 0;
         padding: 14px 0;
         text-align: center;

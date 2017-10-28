@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import StyledMainContainer from './styled-components/StyledMainContainer'
 import Game from './Game'
 import GameControls from './GameControls'
+import Modes from './Modes'
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
           <header>
             <h1>Rock, Scissors, Paper</h1>
           </header>
+          <Modes label={'Playing locally'} onClickHandler={()=>{}}/>
           <Game>
             Main content of the game...
           </Game>
