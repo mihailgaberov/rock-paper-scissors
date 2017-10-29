@@ -12,12 +12,8 @@ class App extends Component {
             <h1>Rock, Scissors, Paper</h1>
           </header>
           <Modes label={'Playing locally'} onClickHandler={()=>{}}/>
-          <Game>
-            Main content of the game...
-          </Game>
-          <GameControls>
-            Game controls...
-          </GameControls>
+          <Game player1={{}} player2={{}} />
+          <GameControls onClickWeapon={()=>{}} weapons={[]}/>
         </StyledMainContainer>
     )
   }

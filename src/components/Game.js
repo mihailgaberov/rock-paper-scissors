@@ -11,7 +11,7 @@ class Game extends Component {
         </Player>
         <span>vs</span>
         <Player>
-          plyaer 2
+          player 2
         </Player>
       </div>
     )
