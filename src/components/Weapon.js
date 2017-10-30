@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Loader from './Loader'
+import StyledWeapon from "./styled-components/StyledWeapon";
 
 const Weapon = ({ icon, loading }) => (
-  <div>
+  <StyledWeapon>
     <span className={!loading && icon ? `fa fa-hand-${icon}-o` : 'empty'}>
 		{!loading && !icon && '?'}
-    {loading && <Loader/>}
+      {loading && <Loader/>}
 	</span>
-  </div>
+  </StyledWeapon>
 )
 
 Weapon.propTypes = {

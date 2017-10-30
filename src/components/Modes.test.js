@@ -8,7 +8,7 @@ function setup() {
     isAuthError: jest.fn()
   }
 
-  return shallow(<Modes{...props} />)
+  return shallow(<Modes {...props} />)
 }
 
 describe('Modes component', () => {

@@ -1,20 +1,15 @@
 import React from 'react'
-import Weapon from './Weapon'
 import PropTypes from 'prop-types'
 
+import Weapon from './Weapon'
+import StyledPlayer from "./styled-components/StyledPlayer";
+
 const Player = ({ label, weapon, score, loading }) => (
-  <div>
-    <div>
-      <label>{label}</label>
-    </div>
-    <Weapon
-      icon={weapon}
-      loading={loading}
-    />
-    <div>
-      <span>{score}</span>
-    </div>
-  </div>
+  <StyledPlayer>
+    <div className={'name'}>{label}</div>
+    <Weapon icon={weapon} loading={loading}/>
+    <div className={'score'}>{score}</div>
+  </StyledPlayer>
 )
 
 Player.proptTypes = {
