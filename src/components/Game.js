@@ -1,22 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Player from './Player'
 
-class Game extends Component {
-  render() {
-    return (
-      <div>
-        <Player>
-          player 1
-        </Player>
-        <span>vs</span>
-        <Player>
-          player 2
-        </Player>
-      </div>
-    )
-  }
-}
+const Game = ({player1, player2}) => (
+  <div>
+    <Player>
+      player 1
+    </Player>
+    <span>vs</span>
+    <Player>
+      player 2
+    </Player>
+  </div>
+)
 
 Game.propTypes = {
   player1: PropTypes.object.isRequired,
