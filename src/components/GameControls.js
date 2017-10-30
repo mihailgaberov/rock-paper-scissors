@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Weapon from './Weapon'
 import StyledWeapon from './styled-components/StyledWeapon'
+import StyledGameControls from "./styled-components/StyledGameControls";
 
 class GameControls extends Component {
   render() {
 
     const {weapons, onClickWeapon} = this.props
     return (
-      <div>
+      <StyledGameControls>
+        <label>Pick your weapon</label>
         <ul>
           {weapons.map(weapon => (
             <li key={weapon}>
@@ -22,8 +24,7 @@ class GameControls extends Component {
             </li>
           ))}
         </ul>
-        <label>Pick your weapon</label>
-      </div>
+      </StyledGameControls>
     )
   }
 }
