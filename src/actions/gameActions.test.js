@@ -6,6 +6,6 @@ describe('Game Actions', () => {
     const expectedAction = {
       type: types.GET_SERVER_CHOICE_REQUEST
     }
-    expect(actions.getServerChoice()).toEqual(expectedAction)
+    expect(actions.getServerChoiceAction()).toEqual(expectedAction)
   })
 })

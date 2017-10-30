@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+import { getServerChoiceAction } from '../actions/gameActions'
+import { getServerChoice} from "../selectors/game";
 import StyledMainContainer from './styled-components/StyledMainContainer'
 import Game from './Game'
 import GameControls from './GameControls'
@@ -116,7 +119,7 @@ class App extends Component {
           <h1>Rock, Scissors, Paper</h1>
         </header>
         <Modes onClickHandler={this.toggleMode}
-               label={modesData[this.state.mode].label} />
+               label={modesData[this.state.mode].label}/>
 
         <Game player1={{ ...this.state.player1, label: player1 }}
               player2={{ ...this.state.player2, label: player2 }}/>
@@ -138,4 +141,17 @@ class App extends Component {
   }
 }
 
-export default App
+
+const mapStateToProps = (state) => {
+  return {
+    serverChoice: getServerChoice(state)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getServerChoice: () => dispatch(getServerChoiceAction())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
