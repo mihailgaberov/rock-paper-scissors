@@ -4,7 +4,7 @@ import StyledMainContainer from './styled-components/StyledMainContainer'
 import Game from './Game'
 import GameControls from './GameControls'
 import Modes from './Modes'
-import gameDataJSON from '../api/game-data.json'
+import gameDataJSON from '../configs/game-data.json'
 import Score from "./Score";
 
 const weapons = Object.keys(gameDataJSON.game.weapons)
