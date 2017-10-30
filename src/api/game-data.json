@@ -1,0 +1,33 @@
+{
+  "game": {
+    "weapons": {
+      "rock": {
+        "wins": [
+          "scissors"
+        ]
+      },
+      "paper": {
+        "wins": [
+          "rock"
+        ]
+      },
+      "scissors": {
+        "wins": [
+          "paper"
+        ]
+      }
+    },
+    "modes": {
+      "locally": {
+        "label": "Player vs Computer",
+        "player1": "Player",
+        "player2": "Computer"
+      },
+      "remotely": {
+        "label": "Player vs Server",
+        "player1": "Player",
+        "player2": "Server"
+      }
+    }
+  }
+}

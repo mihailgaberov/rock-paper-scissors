@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+
 import StyledMainContainer from './styled-components/StyledMainContainer'
 import Game from './Game'
 import GameControls from './GameControls'
 import Modes from './Modes'
+import gameDataJSON from '../api/game-data.json'
+
 
 class App extends Component {
+
   render() {
     return (
         <StyledMainContainer>
@@ -13,7 +17,8 @@ class App extends Component {
           </header>
           <Modes label={'Playing locally'} onClickHandler={()=>{}}/>
           <Game player1={{}} player2={{}} />
-          <GameControls onClickWeapon={()=>{}} weapons={[]}/>
+          <GameControls onClickWeapon={() => console.log('pick a weapon')}
+                        weapons={Object.keys(gameDataJSON.game.weapons)}/>
         </StyledMainContainer>
     )
   }
