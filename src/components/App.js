@@ -47,9 +47,32 @@ class App extends Component {
     return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 2 : 1
   }
 
+  setScore = () => {
+    const winner = this.getWinner(this.state.player1.weapon, this.state.player2.weapon)
+
+    this.setState({
+      player1: {
+        ...this.state.player1,
+        ...((winner === 1) ? {score: this.state.player1.score + 1} : {}),
+        loading: false
+      },
+      player2: {
+        ...this.state.player2,
+        ...((winner === 2) ? {score: this.state.player2.score + 1} : {}),
+        loading: false
+      },
+      winner
+    })
+  }
+
   play = (weapon) => {
     const weapon1 = weapon || this.pickWeapon()
-    const weapon2 = this.state.mode === modes[0] ? this.pickWeapon() : this.props.serverChoice
+    let weapon2 = this.pickWeapon()
+
+    if (this.state.mode === modes[1]) {
+      this.props.getServerChoice()
+      weapon2 = this.props.serverChoice
+    }
 
     this.setState({
       player1: {
@@ -67,24 +90,6 @@ class App extends Component {
     setTimeout(() => {
       this.setScore()
     }, 300)
-  }
-
-  setScore = () => {
-    const winner = this.getWinner(this.state.player1.weapon, this.state.player2.weapon)
-
-    this.setState({
-      player1: {
-        ...this.state.player1,
-        ...((winner === 1) ? {score: this.state.player1.score + 1} : {}),
-        loading: false
-      },
-      player2: {
-        ...this.state.player2,
-        ...((winner === 2) ? {score: this.state.player2.score + 1} : {}),
-        loading: false
-      },
-      winner
-    })
   }
 
   restart = () => {
