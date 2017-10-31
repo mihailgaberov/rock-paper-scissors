@@ -6,7 +6,7 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "jest-enzyme": "^4.0.1",
-    "react-scripts": "1.0.14",
+    "react-scripts": "1.0.15",
     "react-test-renderer": "16",
     "styled-components": "^2.2.2"
   },
