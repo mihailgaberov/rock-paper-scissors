@@ -65,13 +65,12 @@ class App extends Component {
     const weapon1 = weapon || this.pickWeapon()
     const weapon2 = this.pickWeapon()
 
-    const remoteMode = this.state.mode === modes[1]
-
     this.setState({
       player1: {
         ...this.state.player1,
         weapon: weapon1,
-        ...((remoteMode) ? { loading: true } : {})
+        // ...((remoteMode) ? { loading: true } : {})
+        loading: false
       },
       player2: {
         ...this.state.player2,
@@ -83,6 +82,12 @@ class App extends Component {
     setTimeout(() => {
       this.setScore()
     }, 300)
+  }
+
+  playRemote = (weapon) => {
+
+    console.log('player choice: ', weapon)
+    this.props.getServerChoice()
   }
 
   restart = () => {
@@ -125,7 +130,7 @@ class App extends Component {
               player2={{ ...this.state.player2, label: player2 }}/>
 
         {this.state.winner === null && !loading && (
-          <GameControls onClickWeapon={weapon => this.play(weapon)}
+          <GameControls onClickWeapon={weapon => {this.state.mode === modes[1] ? this.playRemote(weapon) : this.play(weapon)}}
                         weapons={Object.keys(gameDataJSON.game.weapons)}/>
         )}
 
@@ -140,7 +145,6 @@ class App extends Component {
     )
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
