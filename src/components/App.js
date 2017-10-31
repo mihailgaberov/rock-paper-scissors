@@ -40,7 +40,7 @@ class App extends Component {
   getWinner = (weapon1, weapon2) => {
     if (weapon1 === weapon2) return 0
 
-    return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 1 : 2
+    return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 2 : 1
   }
 
   play = (weapon) => {
