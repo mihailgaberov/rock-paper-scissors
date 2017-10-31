@@ -8,3 +8,9 @@ export function getServerChoice(state) {
   const immutableState = Map(state)
   return immutableState.getIn(['game', 'serverChoice'], null)
 }
+
+export function setError(state, error) {
+  return state.merge({
+    Error: fromJS(error)
+  })
+}

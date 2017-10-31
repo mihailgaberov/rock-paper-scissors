@@ -1,4 +1,4 @@
-import { fromJS, Map } from 'immutable'
+import { Map } from 'immutable'
 import configureStore from './configureStore'
 
 describe('Store', () => {
@@ -6,12 +6,12 @@ describe('Store', () => {
     const store = configureStore()
     expect(store.getState()).toEqual({game: Map()})
 
-    const serverChoice = fromJS(['rock'])
+    const serverChoice = 'rock'
 
     const expected = Map(serverChoice)
 
     store.dispatch({
-      type: 'GET_SERVER_CHOICE_REQUEST',
+      type: 'GET_SERVER_CHOICE_RESPONSE',
       serverChoice
     })
 

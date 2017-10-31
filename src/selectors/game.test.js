@@ -8,7 +8,7 @@ describe('Game selectors', () => {
       const state = {
         serverChoice: choice
       }
-      const expected = fromJS(games)
+      const expected = fromJS(choice)
 
       expect(saveServerChoice(state)).toEqual(expected)
     })

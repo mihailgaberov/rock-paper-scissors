@@ -1,10 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { shallow } from 'enzyme'
 import GameControls from './GameControls'
+
+function setup() {
+  let props = {
+    weapons: ['rock'],
+    onClickWeapon: jest.fn()
+  }
+
+  return shallow(<GameControls {...props} />)
+}
 
 describe('GameControls component', () => {
   it('should render without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<GameControls />, div)
+    const wrapper = setup()
   })
 })

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import { getServerChoiceAction } from '../actions/gameActions'
 import { getServerChoice } from "../selectors/game"
@@ -30,7 +31,7 @@ const initialState = {
   winner: null
 }
 
-class App extends Component {
+export class App extends Component {
   state = initialState
 
   componentDidMount() {
@@ -146,6 +147,11 @@ class App extends Component {
       </StyledMainContainer>
     )
   }
+}
+
+App.proptTypes = {
+  serverChoice: PropTypes.string,
+  getServerChoice: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
