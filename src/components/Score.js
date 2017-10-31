@@ -9,7 +9,7 @@ const Score = ({ winner, player1, player2, onClickPlay, loading }) => (
     {winner !== null && !loading && (
       <div>
 				<span>
-					{winner === 0 ? 'DRAW' : `${(winner === 1 ? player2 : player1)} WINS`}
+					{winner === 0 ? 'DRAW' : `${(winner === 1 ? player1 : player2)} WINS`}
 				</span>
       </div>
     )}
