@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getServerChoiceAction } from '../actions/gameActions'
-import { getServerChoice} from "../selectors/game";
+import { getServerChoice } from "../selectors/game"
 import StyledMainContainer from './styled-components/StyledMainContainer'
 import Game from './Game'
 import GameControls from './GameControls'
 import Modes from './Modes'
 import gameDataJSON from '../configs/game-data.json'
-import Score from "./Score";
+import Score from "./Score"
 
 const weapons = Object.keys(gameDataJSON.game.weapons)
 const modes = Object.keys(gameDataJSON.game.modes)
@@ -33,18 +33,6 @@ const initialState = {
 class App extends Component {
   state = initialState
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.serverChoice !== nextProps.serverChoice) {
-      this.setState({
-        player2: {
-          weapon: nextProps.serverChoice
-        }
-      })
-
-      this.setScore()
-    }
-  }
-
   pickWeapon = () => {
     return weapons[weapons.length * Math.random() << 0]
   }
@@ -52,8 +40,7 @@ class App extends Component {
   getWinner = (weapon1, weapon2) => {
     if (weapon1 === weapon2) return 0
 
-    if (weaponsData[weapon2])
-      return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 1 : 2
+    return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 1 : 2
   }
 
   play = (weapon) => {
@@ -81,6 +68,8 @@ class App extends Component {
   playRemote = (weapon) => {
     this.props.getServerChoice()
     const weapon1 = weapon || this.pickWeapon()
+    const weapon2 = this.props.serverChoice || this.pickWeapon()
+
     this.setState({
       player1: {
         ...this.state.player1,
@@ -89,10 +78,16 @@ class App extends Component {
       },
       player2: {
         ...this.state.player2,
-        weapon: this.props.serverChoice,
+        weapon: weapon2,
         loading: true
       }
     })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+
+    this.setScore()
   }
 
   setScore = () => {
@@ -101,12 +96,12 @@ class App extends Component {
     this.setState({
       player1: {
         ...this.state.player1,
-        ...((winner === 1) ? { score: this.state.player1.score + 1 } : {}),
+        ...((winner === 1) ? {score: this.state.player1.score + 1} : {}),
         loading: false
       },
       player2: {
         ...this.state.player2,
-        ...((winner === 2) ? { score: this.state.player2.score + 1 } : {}),
+        ...((winner === 2) ? {score: this.state.player2.score + 1} : {}),
         loading: false
       },
       winner
@@ -134,11 +129,11 @@ class App extends Component {
   toggleMode = () => {
     const mode = this.state.mode
     this.reset()
-    this.setState({ mode: mode === modes[0] ? modes[1] : modes[0] })
+    this.setState({mode: mode === modes[0] ? modes[1] : modes[0]})
   }
 
   render() {
-    const { player1, player2 } = modesData[this.state.mode]
+    const {player1, player2} = modesData[this.state.mode]
     const loading = (this.state.player1.loading || this.state.player2.loading)
 
     return (
@@ -149,11 +144,13 @@ class App extends Component {
         <Modes onClickHandler={this.toggleMode}
                label={modesData[this.state.mode].label}/>
 
-        <Game player1={{ ...this.state.player1, label: player1 }}
-              player2={{ ...this.state.player2, label: player2 }}/>
+        <Game player1={{...this.state.player1, label: player1}}
+              player2={{...this.state.player2, label: player2}}/>
 
         {this.state.winner === null && !loading && (
-          <GameControls onClickWeapon={weapon => {this.state.mode === modes[1] ? this.playRemote(weapon) : this.play(weapon)}}
+          <GameControls onClickWeapon={weapon => {
+            this.state.mode === modes[1] ? this.playRemote(weapon) : this.play(weapon)
+          }}
                         weapons={Object.keys(gameDataJSON.game.weapons)}/>
         )}
 
