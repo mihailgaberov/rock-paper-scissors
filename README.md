@@ -1,5 +1,7 @@
 # A React/Redux implementation of the classic game [Rock Paper Scissors](https://en.wikipedia.org/wiki/Rock%E2%80%93paper%E2%80%93scissors).
 
+If you don't want to spend time installing, you can check the [live demo](https://rps-mihail.herokuapp.com).
+
 ![Desktop](https://github.com/mihailgaberov/rock-paper-scissors/blob/master/screenshots/desktop.png)
 ![mobile](https://github.com/mihailgaberov/rock-paper-scissors/blob/master/screenshots/mobile.png)
 
