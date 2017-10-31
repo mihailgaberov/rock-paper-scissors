@@ -1,7 +1,7 @@
 import { Map, fromJS } from 'immutable'
 
 export function saveServerChoice(state, newState) {
-  return state.merge(fromJS({serverChoice: newState}))
+  return state.merge(fromJS({serverChoice: newState.serverChoice}))
 }
 
 export function getServerChoice(state) {
