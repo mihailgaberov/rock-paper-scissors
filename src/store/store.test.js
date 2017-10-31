@@ -1,4 +1,4 @@
-import { Map } from 'immutable'
+import { Map, fromJS } from 'immutable'
 import configureStore from './configureStore'
 
 describe('Store', () => {
@@ -8,7 +8,9 @@ describe('Store', () => {
 
     const serverChoice = 'rock'
 
-    const expected = Map(serverChoice)
+    const expected = fromJS({
+      serverChoice
+    })
 
     store.dispatch({
       type: 'GET_SERVER_CHOICE_RESPONSE',

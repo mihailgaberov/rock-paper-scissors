@@ -5,7 +5,7 @@ import Modes from './Modes'
 function setup() {
   let props = {
     label: 'Playing locally',
-    isAuthError: jest.fn()
+    onClickHandler: jest.fn()
   }
 
   return shallow(<Modes {...props} />)
