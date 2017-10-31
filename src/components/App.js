@@ -33,6 +33,18 @@ const initialState = {
 class App extends Component {
   state = initialState
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.serverChoice !== nextProps.serverChoice) {
+      this.setState({
+        player2: {
+          weapon: nextProps.serverChoice
+        }
+      })
+
+      this.setScore()
+    }
+  }
+
   pickWeapon = () => {
     return weapons[weapons.length * Math.random() << 0]
   }
@@ -40,7 +52,47 @@ class App extends Component {
   getWinner = (weapon1, weapon2) => {
     if (weapon1 === weapon2) return 0
 
-    return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 1 : 2
+    if (weaponsData[weapon2])
+      return weaponsData[weapon2].wins.some(wins => wins === weapon1) ? 1 : 2
+  }
+
+  play = (weapon) => {
+    const weapon1 = weapon || this.pickWeapon()
+    const weapon2 = this.pickWeapon()
+
+    this.setState({
+      player1: {
+        ...this.state.player1,
+        weapon: weapon1,
+        loading: false
+      },
+      player2: {
+        ...this.state.player2,
+        weapon: weapon2,
+        loading: true
+      }
+    })
+
+    setTimeout(() => {
+      this.setScore()
+    }, 300)
+  }
+
+  playRemote = (weapon) => {
+    this.props.getServerChoice()
+    const weapon1 = weapon || this.pickWeapon()
+    this.setState({
+      player1: {
+        ...this.state.player1,
+        weapon: weapon1,
+        loading: true
+      },
+      player2: {
+        ...this.state.player2,
+        weapon: this.props.serverChoice,
+        loading: true
+      }
+    })
   }
 
   setScore = () => {
@@ -59,35 +111,6 @@ class App extends Component {
       },
       winner
     })
-  }
-
-  play = (weapon) => {
-    const weapon1 = weapon || this.pickWeapon()
-    const weapon2 = this.pickWeapon()
-
-    this.setState({
-      player1: {
-        ...this.state.player1,
-        weapon: weapon1,
-        // ...((remoteMode) ? { loading: true } : {})
-        loading: false
-      },
-      player2: {
-        ...this.state.player2,
-        weapon: weapon2,
-        loading: true
-      }
-    })
-
-    setTimeout(() => {
-      this.setScore()
-    }, 300)
-  }
-
-  playRemote = (weapon) => {
-
-    console.log('player choice: ', weapon)
-    this.props.getServerChoice()
   }
 
   restart = () => {
