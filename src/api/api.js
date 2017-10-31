@@ -5,7 +5,7 @@ export default class RockPaperScissorsApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const weapons = Object.keys(gameDataJSON.game.weapons)
-        resolve(weapons[gameDataJSON.game.weapons.length * Math.random() << 0])
+        resolve(weapons[weapons.length * Math.random() << 0])
       }, 500)
     })
   }
