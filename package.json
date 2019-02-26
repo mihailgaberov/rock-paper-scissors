@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "yarn global add server && serve -s build"
+    "deploy": "npm i -g serve && serve -s build"
   },
   "heroku-run-build-script": true
 }
