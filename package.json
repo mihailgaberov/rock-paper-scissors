@@ -24,8 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "deploy": "npm install -g pushstate-server && pushstate-server build"
+    "eject": "react-scripts eject"
   },
   "heroku-run-build-script": true
 }
